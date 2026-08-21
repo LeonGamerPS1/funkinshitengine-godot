@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b4jvavp4h1sh6"]
+
+[ext_resource type="Script" uid="uid://5ymhcnp6bgwc" path="res://source/objs/strumLine.gd" id="1_2ndou"]
+
+[node name="strumline" type="Node2D" unique_id=1975566649]
+z_as_relative = false
+script = ExtResource("1_2ndou")

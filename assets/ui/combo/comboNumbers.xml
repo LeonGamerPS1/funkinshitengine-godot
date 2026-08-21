@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="comboNumbers.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="num00000" x="190" y="0" width="95" height="115" frameX="1" frameY="0" frameWidth="94" frameHeight="119"/>
+	<SubTexture name="num10000" x="0" y="0" width="95" height="115" frameX="-1" frameY="1" frameWidth="98" frameHeight="120"/>
+	<SubTexture name="num20000" x="95" y="0" width="95" height="115" frameX="-5" frameY="-6" frameWidth="105" frameHeight="129"/>
+	<SubTexture name="num30000" x="0" y="115" width="95" height="115" frameX="-3" frameY="-6" frameWidth="102" frameHeight="134"/>
+	<SubTexture name="num40000" x="95" y="115" width="95" height="115" frameX="-1" frameY="-9" frameWidth="98" frameHeight="130"/>
+	<SubTexture name="num50000" x="190" y="115" width="95" height="115" frameX="-11" frameY="-12" frameWidth="111" frameHeight="135"/>
+	<SubTexture name="num60000" x="285" y="0" width="95" height="115" frameX="-10" frameY="-8" frameWidth="108" frameHeight="134"/>
+	<SubTexture name="num70000" x="285" y="115" width="95" height="115" frameX="2" frameY="2" frameWidth="91" frameHeight="111"/>
+	<SubTexture name="num80000" x="95" y="230" width="94" height="115" frameX="2" frameY="2" frameWidth="90" frameHeight="115"/>
+	<SubTexture name="num90000" x="0" y="230" width="95" height="115" frameX="2" frameY="1" frameWidth="91" frameHeight="124"/>
+</TextureAtlas>

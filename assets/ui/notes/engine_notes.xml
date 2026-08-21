@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="engine_notes.png">
+	<!-- Created with Adobe Animate version 23.0.1.70 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="arrowDOWN0000" x="2" y="148" width="157" height="144"/>
+	<SubTexture name="arrowLEFT0000" x="320" y="161" width="143" height="157"/>
+	<SubTexture name="arrowRIGHT0000" x="147" y="294" width="143" height="157"/>
+	<SubTexture name="arrowUP0000" x="161" y="2" width="157" height="144"/>
+	<SubTexture name="blue0000" x="161" y="148" width="157" height="143"/>
+	<SubTexture name="blue hold end0000" x="292" y="392" width="47" height="70"/>
+	<SubTexture name="blue hold piece0000" x="341" y="392" width="47" height="1"/>
+	<SubTexture name="green0000" x="2" y="2" width="157" height="144"/>
+	<SubTexture name="green hold end0000" x="390" y="320" width="47" height="70"/>
+	<SubTexture name="green hold piece0000" x="2" y="457" width="47" height="1"/>
+	<SubTexture name="purple0000" x="320" y="2" width="143" height="157"/>
+	<SubTexture name="purple hold end0000" x="341" y="320" width="47" height="70"/>
+	<SubTexture name="purple hold piece0000" x="2" y="454" width="47" height="1"/>
+	<SubTexture name="red0000" x="2" y="294" width="143" height="158"/>
+	<SubTexture name="red hold end0000" x="292" y="320" width="47" height="70"/>
+	<SubTexture name="red hold piece0000" x="51" y="454" width="47" height="1"/>
+</TextureAtlas>

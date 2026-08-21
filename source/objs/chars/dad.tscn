@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dk2scu8cqasme"]
+
+[ext_resource type="SpriteFrames" uid="uid://bpx336d57m0pk" path="res://assets/images/characters/DADDY_DEAREST.xml" id="1_6o6lx"]
+[ext_resource type="Script" uid="uid://ueue8j553l4t" path="res://source/objs/character.gd" id="2_ex3lo"]
+
+[node name="dad" type="AnimatedSprite2D" unique_id=239338355]
+sprite_frames = ExtResource("1_6o6lx")
+animation = &"Dad idle dance"
+script = ExtResource("2_ex3lo")
+camPos = Vector2(150, -100)
+anim_config = Dictionary[String, Dictionary]({
+"down": {
+"fps": 24.0,
+"name": "down",
+"offsets": [14, 17],
+"prefix": "Dad Sing Note DOWN"
+},
+"idle": {
+"fps": 24.0,
+"name": "idle",
+"offsets": [0, 0],
+"prefix": "Dad idle dance"
+},
+"left": {
+"fps": 24.0,
+"name": "left",
+"offsets": [-9, -10],
+"prefix": "Dad Sing Note LEFT"
+},
+"right": {
+"fps": 24.0,
+"name": "right",
+"offsets": [20, -15],
+"prefix": "Dad Sing Note RIGHT"
+},
+"up": {
+"fps": 24.0,
+"name": "up",
+"offsets": [0, -22],
+"prefix": "Dad Sing Note UP"
+}
+})

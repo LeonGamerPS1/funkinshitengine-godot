@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://crct11ktcemko"]
+
+[ext_resource type="Script" uid="uid://ba3aodissdx23" path="res://afterimage.gd" id="1_g1m20"]
+
+[node name="Sprite2D" type="Sprite2D" unique_id=809562512]
+script = ExtResource("1_g1m20")
+fade_speed = 1.0
+drift_speed = 200.0

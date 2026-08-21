@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b4jvavp4h1sh6"]
+
+[ext_resource type="Script" uid="uid://5ymhcnp6bgwc" path="res://source/objs/strumLine.gd" id="1_2ndou"]
+[ext_resource type="Script" uid="uid://udvhynvy0uf2" path="res://source/objs/d.gd" id="2_71a2b"]
+[ext_resource type="SpriteFrames" uid="uid://csv1nm6ko10ir" path="res://assets/ui/notes/NOTE_assets.xml" id="4_pyiph"]
+
+[node name="strumline" type="Node2D" unique_id=1975566649]
+script = ExtResource("1_2ndou")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1114866598]
+script = ExtResource("2_71a2b")
+note_sprite_frames = ExtResource("4_pyiph")
+animation_name = "left confirm"

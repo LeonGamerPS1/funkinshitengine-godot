@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dydo4jhhsplpl"]
+
+[ext_resource type="SpriteFrames" uid="uid://c35x8s4nyhaly" path="res://assets/images/characters/BOYFRIEND.xml" id="1_doc7c"]
+[ext_resource type="Script" uid="uid://ueue8j553l4t" path="res://source/objs/character.gd" id="2_k3p1r"]
+
+[node name="bf" type="AnimatedSprite2D" unique_id=843374013]
+sprite_frames = ExtResource("1_doc7c")
+animation = &"BF idle dance"
+script = ExtResource("2_k3p1r")
+camPos = Vector2(-100, -100)
+anim_config = Dictionary[String, Dictionary]({
+"down": {
+"fps": 24.0,
+"name": "down",
+"offsets": [0, 25],
+"prefix": "BF NOTE DOWN"
+},
+"idle": {
+"fps": 24.0,
+"name": "idle",
+"offsets": [0, 0],
+"prefix": "BF idle dance"
+},
+"left": {
+"fps": 24.0,
+"name": "left",
+"offsets": [-19, 5],
+"prefix": "BF NOTE LEFT"
+},
+"right": {
+"fps": 24.0,
+"name": "right",
+"offsets": [42, 3],
+"prefix": "BF NOTE RIGHT"
+},
+"up": {
+"fps": 24.0,
+"name": "up",
+"offsets": [25, -13],
+"prefix": "BF NOTE UP"
+}
+})

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://boqdcnp3aemm3"]
+
+[ext_resource type="SpriteFrames" uid="uid://i0i2q5chm1ht" path="res://assets/images/characters/gfPixel.xml" id="1_or25x"]
+[ext_resource type="Script" uid="uid://ueue8j553l4t" path="res://source/objs/character.gd" id="2_hr8vs"]
+
+[node name="gf" type="AnimatedSprite2D" unique_id=1648963714]
+texture_filter = 1
+scale = Vector2(6, 6)
+sprite_frames = ExtResource("1_or25x")
+animation = &"GF IDLE"
+script = ExtResource("2_hr8vs")
+isDancer = true
+anim_config = Dictionary[String, Dictionary]({
+"": {},
+"danceLEFT": {
+"fps": 24.0,
+"name": "danceLEFT",
+"offsets": [0, 0],
+"prefix": "GF IDLE"
+},
+"danceRIGHT": {
+"fps": 24.0,
+"name": "danceRIGHT",
+"offsets": [0, 0],
+"prefix": "GF IDLE2"
+}
+})

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="comboWords.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="bad0000" x="0" y="376" width="191" height="127" frameX="-22" frameY="-3" frameWidth="261" frameHeight="131"/>
+	<SubTexture name="combo0000" x="0" y="143" width="320" height="121" frameX="-10" frameY="-14" frameWidth="343" frameHeight="138"/>
+	<SubTexture name="good0000" x="0" y="264" width="264" height="112" frameX="-23" frameY="-6" frameWidth="317" frameHeight="126"/>
+	<SubTexture name="shit0000" x="350" y="0" width="244" height="146" frameX="-11" frameY="-8" frameWidth="285" frameHeight="163"/>
+	<SubTexture name="sick0000" x="0" y="0" width="350" height="143" frameX="-9" frameY="-5" frameWidth="403" frameHeight="152"/>
+</TextureAtlas>

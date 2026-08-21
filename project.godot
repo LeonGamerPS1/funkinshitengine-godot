@@ -1,0 +1,90 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Funkin' Shit Engine"
+config/version="0.0.1"
+run/main_scene="uid://dnjhv0xsunkw8"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+run/max_fps=60
+run/delta_smoothing=false
+boot_splash/bg_color=Color(0.14117648, 0.14117648, 0.14117648, 0)
+boot_splash/use_filter=false
+boot_splash/image="uid://dohl67he3sus5"
+config/icon="uid://b3cempnfa028v"
+
+[audio]
+
+buses/default_bus_layout="uid://mrd1kuv4rja0"
+
+[autoload]
+
+Boot="*uid://ce6a75b0pbl2f"
+SaveManager="*uid://c6mrjw6evln2j"
+DiscordRPCLoader="*uid://p1sfvjiroe37"
+Overlay="*uid://bi5sv7f1ytyda"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/initial_position_type=4
+window/size/sharp_corners=true
+window/energy_saving/keep_screen_on=false
+window/subwindows/embed_subwindows=false
+window/frame_pacing/android/swappy_mode=1
+window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
+window/dpi/allow_hidpi=false
+display_server/driver.linuxbsd="x11"
+window/vsync/vsync_mode=0
+window/ios/hide_home_indicator=false
+window/ios/hide_status_bar=false
+window/ios/suppress_ui_gesture=false
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg", "res://addons/gdanimate-main/plugin.cfg", "res://addons/godot_sparrow/plugin.cfg", "res://addons/post_effect_stack/plugin.cfg", "res://addons/simple-gui-transitions/plugin.cfg")
+
+[gui_transitions]
+
+config/default/auto_start=true
+config/default/fade_layout=true
+config/default/center_pivot=true
+config/default/duration=0.5
+config/default/delay=0.5
+config/default/transition_type="QUAD"
+config/default/ease_type="IN_OUT"
+config/default/animation_enter=4
+config/default/animation_leave=4
+
+[physics]
+
+2d/physics_engine="Dummy"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_s3tc_bptc=true
+textures/vram_compression/import_etc2_astc=true
+lights_and_shadows/use_physical_light_units=true
+textures/default_filters/use_nearest_mipmap_filter=true
+textures/default_filters/anisotropic_filtering_level=1
+scaling_3d/mode=5
+scaling_3d/mode.ios=5
+scaling_3d/mode.macos=5
+viewport/transparent_background=true
+
+[scene_manager]
+
+initial_scene=""
