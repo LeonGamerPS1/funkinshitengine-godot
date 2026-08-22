@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dydo4jhhsplpl" path="res://source/objs/chars/bf.tscn" id="13_wnnob"]
 
 [node name="Node2D" type="Node2D" unique_id=112801622 node_paths=PackedStringArray("inst", "voices", "strumLines", "characters", "healthBar", "timeBar", "iconP1", "iconP2")]
+process_mode = 3
 script = ExtResource("1_ewn2p")
 inst = NodePath("inst")
 voices = NodePath("voices")
@@ -64,8 +65,19 @@ horizontal_alignment = 1
 [node name="icons" type="Node2D" parent="camHUD/Node2D/timeBar" unique_id=1784786089]
 position = Vector2(300.5, 10)
 
+[node name="strumlines" type="Node2D" parent="camHUD/Node2D" unique_id=389750993]
+position = Vector2(0, 16)
+
+[node name="0" parent="camHUD/Node2D/strumlines" unique_id=1975566649 node_paths=PackedStringArray("character") instance=ExtResource("10_vm2na")]
+position = Vector2(320, 50)
+character = NodePath("../../../../dad")
+
+[node name="1" parent="camHUD/Node2D/strumlines" unique_id=109666557 node_paths=PackedStringArray("character") instance=ExtResource("10_vm2na")]
+position = Vector2(960, 50)
+isOpponentSide = false
+character = NodePath("../../../../bf")
+
 [node name="healthbar" type="TextureProgressBar" parent="camHUD/Node2D" unique_id=1001578737]
-z_index = -1
 texture_filter = 1
 offset_left = 340.0
 offset_top = 647.0
@@ -100,30 +112,6 @@ texture_filter = 2
 position = Vector2(-43, 0)
 texture = ExtResource("5_texsc")
 region_filter_clip_enabled = true
-
-[node name="Label2" type="Label" parent="camHUD/Node2D" unique_id=425136900]
-texture_filter = 2
-offset_top = 702.0
-offset_right = 329.0
-offset_bottom = 735.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("9_d1mkr")
-text = "Shit Engine Lite (incomplete GD rewrite)"
-
-[node name="strumlines" type="Node2D" parent="camHUD/Node2D" unique_id=389750993]
-z_index = 1
-position = Vector2(0, 16)
-
-[node name="0" parent="camHUD/Node2D/strumlines" unique_id=1975566649 node_paths=PackedStringArray("character") instance=ExtResource("10_vm2na")]
-position = Vector2(320, 50)
-character = NodePath("../../../../dad")
-
-[node name="1" parent="camHUD/Node2D/strumlines" unique_id=109666557 node_paths=PackedStringArray("character") instance=ExtResource("10_vm2na")]
-position = Vector2(960, 50)
-isOpponentSide = false
-character = NodePath("../../../../bf")
 
 [node name="stage" type="Node2D" parent="." unique_id=724064643]
 

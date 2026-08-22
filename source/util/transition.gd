@@ -10,6 +10,7 @@ func _ready() -> void:
 static func switchScene(scene):
 	i.visible = true
 	animplayer.play('slidein')
+	i.queue_redraw()
 	await animplayer.animation_finished
 	doSomeShit(scene)
 	animplayer.play('slideout')

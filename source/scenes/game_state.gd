@@ -33,7 +33,7 @@ func _ready() -> void:
 	timeBar.value = 0
 	timeBar.max_value = voices.stream.get_length()
 	Conductor.bpm = song.bpm
-	# Ensure Conductor uses milliseconds matching your original logic
+
 	Conductor.time = -Conductor.beat_length * 5
 	Conductor.events.on_measure.connect(onSectionHit)
 	if downscroll:
@@ -94,7 +94,6 @@ func onSectionHit(section: int):
 func _process(_delta: float) -> void:
 	if healthBar.value != health:
 		healthBar.value = health
-		health = healthBar.value
 		var perc =  health / healthBar.max_value
 
 		
@@ -112,23 +111,21 @@ func _process(_delta: float) -> void:
 	camHUD.scale = lerp(Vector2.ONE,camHUD.scale,exp(-_delta * 8) )
 	var inst_pos = inst.get_playback_position()
 	if(inst.playing):
-		# 1. Get raw position from audio driver
+
 		timeBar.value = inst_pos
-		# 1. Define your variables (Replace with your actual node references/values)
+
 		var song_name: String = song.song
 		var difficulty: String = "HARD"
 		var current_seconds: float = timeBar.value
 		var total_seconds: float = timeBar.max_value
 
-# 2. Calculate minutes and seconds mathematically
-		var cur_min: int = int(current_seconds) / 60
+
+		var cur_min: float = current_seconds / 60.0
 		var cur_sec: int = int(current_seconds) % 60
-		var tot_min: int = int(total_seconds) / 60
+		var tot_min: float = total_seconds / 60.0
 		var tot_sec: int = int(total_seconds) % 60
 
-# 3. Combine everything into one string using the % operator
-# %s = String | %d = Integer | %02d = Integer padded to 2 digits (e.g., 05 instead of 5)
-		timeTxt.text = "%s - %s  (%d:%02d / %d:%02d)" % [
+		timeTxt.text = "%s - %s  (%d:%02f / %d:%02d)" % [
 		song_name, 
 		difficulty, 
 		cur_min, 
@@ -148,7 +145,7 @@ func _process(_delta: float) -> void:
 				
 	if(startedCountdown and not startedSong):
 		# Keep delta processing during countdown
-		Conductor.time += (1 / SaveManager.Settings.get('fps')) * 1000
+		Conductor.time += _delta * 1000
 		if(Conductor.time >= 0):
 			startSong()
 			
@@ -177,7 +174,6 @@ func updateIcon(icon:Sprite2D, player:bool, percent:float):
 			
 		
 func onDeath():
-	var bf = characters[1]
-	bf.position.x += 20000
+	Transition.switchScene('res://source/scenes/GameState.tscn')
 
 	

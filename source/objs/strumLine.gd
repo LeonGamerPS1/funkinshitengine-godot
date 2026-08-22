@@ -113,6 +113,8 @@ func _process(_delta: float) -> void:
 
 
 func hitNote(note:Note):
+	if note.missed:
+		return
 	var strum:Strum = strumArray[note.lane]
 
 	if not note.hit:
@@ -120,7 +122,7 @@ func hitNote(note:Note):
 		strum.confirm()
 		doCharAnim(note)
 		if(note.cpu):
-			strum.r = 0.15
+			strum.r = Conductor.step_length * 1.1 / 1000
 	
 	
 	if not isOpponentSide and not hitDir.has(note.lane):
@@ -227,7 +229,7 @@ func stepHit(_step:int):
 			strum.confirm()
 			noteHit.emit(note, self)
 			if note.cpu:
-				strum.r = .15
+				strum.r = Conductor.step_length * 1.24 / 1000
 			
 func _exit_tree() -> void:
 	Conductor.events.on_step.disconnect(stepHit)

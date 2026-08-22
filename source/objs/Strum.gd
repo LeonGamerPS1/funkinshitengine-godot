@@ -17,23 +17,16 @@ func init(data:int = 0):
 	sprite_frames.set_animation_loop('arrow' + animations[data %  animations.size()].to_upper(), true)
 	show_behind_parent = true
 	noteColor = Save.Settings['noteColors'][dir]
-	material = load('res://assets/shaders/noteRGB.material')
-	set_instance_shader_parameter('red', Vector3(1,0,0))
-	set_instance_shader_parameter('green', Vector3(0,1,0))
-	set_instance_shader_parameter('blue', Vector3(0,0,1))
+	idle()
+	centered = true
 func confirm():
 	frame = 0
-	if self_modulate != noteColor:
-		self_modulate = noteColor
 	play(animations[dir %  animations.size()] + ' confirm')
 	
 func press():
-	if self_modulate != noteColor:
-		self_modulate = noteColor
 	play(animations[dir %  animations.size()] + ' press')
 	
 func idle():
-	self_modulate = Color.WHITE
 	play('arrow' + animations[dir %  animations.size()].to_upper())
 func _process(delta: float) -> void:
 	if(r != 0):
