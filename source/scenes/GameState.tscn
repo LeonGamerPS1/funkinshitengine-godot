@@ -117,6 +117,7 @@ region_filter_clip_enabled = true
 
 [node name="Parallax2D2" type="Parallax2D" parent="stage" unique_id=2111602401]
 scroll_scale = Vector2(0.9, 0.9)
+scroll_offset = Vector2(52, -66)
 
 [node name="Sprite2D2" type="Sprite2D" parent="stage/Parallax2D2" unique_id=2003044309]
 position = Vector2(691, 543)
