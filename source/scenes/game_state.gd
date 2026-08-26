@@ -27,7 +27,7 @@ func _ready() -> void:
 	timeTxt = timeBar.get_node("progress text")
 	timeBar.modulate.a = 0
 	startCountdown()
-	song = Song.loadFromJson('hard', 'ayoeth')
+	song = Song.loadFromJson('hard', 'manifest')
 	inst.stream = AudioUtil.load_stream(AudioUtil.add_audio_ext('res://assets/songs/' + str(song.song).to_lower().replace(' ','-')) + '/Inst')
 	voices.stream = AudioUtil.load_stream(AudioUtil.add_audio_ext('res://assets/songs/' + str(song.song).to_lower().replace(' ','-')) + '/Voices')
 	timeBar.value = 0

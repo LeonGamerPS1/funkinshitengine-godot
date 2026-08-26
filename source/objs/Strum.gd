@@ -15,10 +15,11 @@ func init(data:int = 0):
 	apply_scale(Vector2(.7, .7))
 	play('arrow' + animations[data %  animations.size()].to_upper())
 	sprite_frames.set_animation_loop('arrow' + animations[data %  animations.size()].to_upper(), true)
-	show_behind_parent = true
 	noteColor = Save.Settings['noteColors'][dir]
 	idle()
 	centered = true
+	
+
 func confirm():
 	frame = 0
 	play(animations[dir %  animations.size()] + ' confirm')

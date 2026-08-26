@@ -24,7 +24,7 @@ func _exit_tree() -> void:
 	save()
 	
 func onSafeFileLoad():
-	Engine.max_fps = Settings.get('fps', 64)
+	Engine.max_fps = Settings.get('fps', 64) 
 	DisplayServer.window_set_mode(Settings.get('windowMode', DisplayServer.WINDOW_MODE_WINDOWED))
 	
 func load_data():

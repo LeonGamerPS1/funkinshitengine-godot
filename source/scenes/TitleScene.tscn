@@ -13,6 +13,7 @@ logo = NodePath("logo")
 music = NodePath("music")
 
 [node name="gf" type="AnimatedSprite2D" parent="." unique_id=204925051]
+oversampling_with_scale = 1
 position = Vector2(918, 387)
 sprite_frames = ExtResource("1_a2j07")
 animation = &"gfDance"

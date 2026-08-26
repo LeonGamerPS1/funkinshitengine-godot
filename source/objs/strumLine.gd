@@ -56,7 +56,7 @@ func _process(_delta: float) -> void:
 		if data[0] <= Conductor.time + (1500 / speed):
 			var strum: Strum = strumArray[int(data[1]) % strums] 
 			var note: Note = getNoteFromDump()
-			strum.add_child(note)
+			add_child(note)
 			note.setup(data, strum, speed)
 			note.cpu = isOpponentSide
 			aliveNotes.append(note)
@@ -82,7 +82,7 @@ func _process(_delta: float) -> void:
 			note.hit = false
 			note.sustainContainer.modulate.a = .4
 		
-		note.position = Vector2.ZERO
+		note.position = strum.position
 		
 
 		if  time <= Conductor.time and isOpponentSide:
@@ -97,9 +97,9 @@ func _process(_delta: float) -> void:
 		if not note.hit:
 			
 			if not downscroll:
-				note.position.y += (time - Conductor.time) * (0.45 * speed) / strum.scale.y
+				note.position.y += (time - Conductor.time) * (0.45 * speed) 
 			else:
-				note.position.y -= (time - Conductor.time) * (0.45 * speed) / strum.scale.y
+				note.position.y -= (time - Conductor.time) * (0.45 * speed) 
 		var p = killZone if note.missed else 0.0
 		if (note.hit or note.missed) and time + note.lengthSus + p <= Conductor.time:
 			wreckNote(note)
