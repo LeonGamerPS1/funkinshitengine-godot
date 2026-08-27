@@ -29,7 +29,6 @@ buses/default_bus_layout="uid://mrd1kuv4rja0"
 
 Boot="*uid://ce6a75b0pbl2f"
 SaveManager="*uid://c6mrjw6evln2j"
-DiscordRPCLoader="*uid://p1sfvjiroe37"
 Overlay="*uid://bi5sv7f1ytyda"
 
 [display]
@@ -52,7 +51,7 @@ window/ios/suppress_ui_gesture=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg", "res://addons/gdanimate-main/plugin.cfg", "res://addons/godot_sparrow/plugin.cfg", "res://addons/post_effect_stack/plugin.cfg", "res://addons/simple-gui-transitions/plugin.cfg")
+enabled=PackedStringArray("res://addons/gdanimate-main/plugin.cfg", "res://addons/godot_sparrow/plugin.cfg")
 
 [gui_transitions]
 

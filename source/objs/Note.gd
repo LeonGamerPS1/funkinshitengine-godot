@@ -42,7 +42,6 @@ func setup(_data:Array[Variant], strum:Strum, _speed:float = 21):
 	lane = int(data[1]) % 4
 	
 	sustainContainer.modulate.a = 1
-	modulate = Save.Settings['noteColors'][lane]
 	self_modulate.a = 1
 	sustain.texture = sprite_frames.get_frame_texture(colors[lane] + ' hold piece', 0)
 	endPiece.texture = sprite_frames.get_frame_texture(colors[lane] + ' hold end', 0)

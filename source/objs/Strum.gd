@@ -4,7 +4,6 @@ class_name Strum
 static var animations:Array[String] = ['left', 'down', 'up', 'right']
 var dir = 0
 var r = 0
-var noteColor = Color.WHITE
 
 
 var holding = false
@@ -15,7 +14,6 @@ func init(data:int = 0):
 	apply_scale(Vector2(.7, .7))
 	play('arrow' + animations[data %  animations.size()].to_upper())
 	sprite_frames.set_animation_loop('arrow' + animations[data %  animations.size()].to_upper(), true)
-	noteColor = Save.Settings['noteColors'][dir]
 	idle()
 	centered = true
 	
