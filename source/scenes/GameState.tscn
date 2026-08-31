@@ -4,18 +4,17 @@
 [ext_resource type="Script" uid="uid://s3g7qk7dnpen" path="res://source/scenes/game_state.gd" id="1_ewn2p"]
 [ext_resource type="Texture2D" uid="uid://bi8gukr602xj6" path="res://assets/ui/healthBar.png" id="2_4kcx6"]
 [ext_resource type="Script" uid="uid://b2iq376g2c37j" path="res://source/objs/healthbar.gd" id="3_4kcx6"]
-[ext_resource type="Texture2D" uid="uid://itlcnhfdxtk8" path="res://assets/ui/icons/icon-dad.png" id="5_texsc"]
 [ext_resource type="Texture2D" uid="uid://yoq0l8wjrfgw" path="res://assets/ui/icons/icon-bf.png" id="6_7rm5y"]
+[ext_resource type="Script" uid="uid://d16r7nj83emeh" path="res://source/objs/Stage.gd" id="8_texsc"]
 [ext_resource type="FontFile" uid="uid://67waa354s0lt" path="res://assets/fnts/vcr.ttf" id="9_d1mkr"]
 [ext_resource type="Texture2D" uid="uid://blnprjqrdqhrt" path="res://assets/images/week1/stageback.png" id="9_texsc"]
 [ext_resource type="Texture2D" uid="uid://v8tr0qojswkk" path="res://assets/images/week1/stagefront.png" id="10_ass06"]
 [ext_resource type="PackedScene" uid="uid://b4jvavp4h1sh6" path="res://source/objs/strumline.tscn" id="10_vm2na"]
-[ext_resource type="Texture2D" uid="uid://bo6tmqmoemf62" path="res://assets/images/week1/stagecurtains.png" id="11_wnnob"]
 [ext_resource type="PackedScene" uid="uid://dk2scu8cqasme" path="res://source/objs/chars/dad.tscn" id="12_ass06"]
 [ext_resource type="PackedScene" uid="uid://boqdcnp3aemm3" path="res://source/objs/chars/gf-pixel.tscn" id="12_w6hjx"]
 [ext_resource type="PackedScene" uid="uid://dydo4jhhsplpl" path="res://source/objs/chars/bf.tscn" id="13_wnnob"]
 
-[node name="Node2D" type="Node2D" unique_id=112801622 node_paths=PackedStringArray("inst", "voices", "strumLines", "characters", "healthBar", "timeBar", "iconP1", "iconP2")]
+[node name="Node2D" type="Node2D" unique_id=112801622 node_paths=PackedStringArray("inst", "voices", "strumLines", "characters", "healthBar", "iconP1", "iconP2")]
 process_mode = 3
 script = ExtResource("1_ewn2p")
 inst = NodePath("inst")
@@ -23,7 +22,6 @@ voices = NodePath("voices")
 strumLines = [NodePath("camHUD/Node2D/strumlines/0"), NodePath("camHUD/Node2D/strumlines/1")]
 characters = [NodePath("dad"), NodePath("bf")]
 healthBar = NodePath("camHUD/Node2D/healthbar")
-timeBar = NodePath("camHUD/Node2D/timeBar")
 iconP1 = [NodePath("camHUD/Node2D/healthbar/icons/iconP1")]
 iconP2 = [NodePath("camHUD/Node2D/healthbar/icons/iconP2")]
 
@@ -35,35 +33,17 @@ follow_viewport_scale = 1.1
 [node name="Node2D" type="Node2D" parent="camHUD" unique_id=153041920]
 position = Vector2(-640, -360)
 
-[node name="timeBar" type="TextureProgressBar" parent="camHUD/Node2D" unique_id=157791351]
-texture_filter = 1
+[node name="progress text" type="Label" parent="camHUD/Node2D" unique_id=633836156]
+texture_filter = 2
 offset_left = 340.0
 offset_top = 16.0
 offset_right = 941.0
-offset_bottom = 56.0
-mouse_filter = 2
-step = 0.0
-value = 50.0
-texture_under = ExtResource("1_7tule")
-texture_over = ExtResource("2_4kcx6")
-texture_progress = ExtResource("1_7tule")
-tint_under = Color(0, 0, 0, 1)
-script = ExtResource("3_4kcx6")
-lerp_speed = 7.5
-iconBopScale = Vector2(1.5, 1.5)
-
-[node name="progress text" type="Label" parent="camHUD/Node2D/timeBar" unique_id=633836156]
-layout_mode = 0
-offset_right = 601.0
-offset_bottom = 33.0
+offset_bottom = 49.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_d1mkr")
 text = "Loading.. - N/A  (0:00 / 0:00)"
 horizontal_alignment = 1
-
-[node name="icons" type="Node2D" parent="camHUD/Node2D/timeBar" unique_id=1784786089]
-position = Vector2(300.5, 10)
 
 [node name="strumlines" type="Node2D" parent="camHUD/Node2D" unique_id=389750993]
 position = Vector2(0, 16)
@@ -94,14 +74,14 @@ texture_progress = ExtResource("1_7tule")
 tint_under = Color(1, 0, 0, 1)
 tint_progress = Color(0, 1, 0, 1)
 script = ExtResource("3_4kcx6")
-lerp_speed = 7.5
+iconBopScale = Vector2(1.1, 1.1)
 
 [node name="icons" type="Node2D" parent="camHUD/Node2D/healthbar" unique_id=1114678183]
-position = Vector2(300.5, 10)
+position = Vector2(300.5, -75)
 
 [node name="iconP1" type="Sprite2D" parent="camHUD/Node2D/healthbar/icons" unique_id=138033593]
 texture_filter = 2
-position = Vector2(43, 0)
+position = Vector2(43, 75)
 texture = ExtResource("6_7rm5y")
 flip_h = true
 hframes = 2
@@ -109,11 +89,13 @@ hframes = 2
 [node name="iconP2" type="Sprite2D" parent="camHUD/Node2D/healthbar/icons" unique_id=1647625921]
 oversampling_with_scale = 1
 texture_filter = 2
-position = Vector2(-43, 0)
-texture = ExtResource("5_texsc")
+position = Vector2(-43, 75)
+texture = ExtResource("6_7rm5y")
+hframes = 2
 region_filter_clip_enabled = true
 
 [node name="stage" type="Node2D" parent="." unique_id=724064643]
+script = ExtResource("8_texsc")
 
 [node name="Parallax2D2" type="Parallax2D" parent="stage" unique_id=2111602401]
 scroll_scale = Vector2(0.9, 0.9)
@@ -131,16 +113,12 @@ texture = ExtResource("10_ass06")
 scroll_scale = Vector2(1.2, 1.2)
 scroll_offset = Vector2(-5, 103)
 
-[node name="Sprite2D" type="Sprite2D" parent="stage/Parallax2D3" unique_id=1997072496]
-z_index = 1
-position = Vector2(691, 519)
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("11_wnnob")
-
 [node name="camFollow" type="Node2D" parent="." unique_id=1661667835]
 position = Vector2(354, 496)
 
-[node name="Camera2D" type="Camera2D" parent="camFollow" unique_id=682590132]
+[node name="Node2D" type="Node2D" parent="camFollow" unique_id=1057725433]
+
+[node name="Camera2D" type="Camera2D" parent="camFollow/Node2D" unique_id=682590132]
 ignore_rotation = false
 limit_enabled = false
 position_smoothing_enabled = true
@@ -148,7 +126,7 @@ position_smoothing_speed = 2.5
 rotation_smoothing_enabled = true
 
 [node name="gf" parent="." unique_id=1648963714 instance=ExtResource("12_w6hjx")]
-position = Vector2(727, 529)
+position = Vector2(727, 536)
 
 [node name="dad" parent="." unique_id=239338355 instance=ExtResource("12_ass06")]
 texture_repeat = 1

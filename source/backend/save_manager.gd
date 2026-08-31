@@ -1,12 +1,19 @@
 extends Node
 class_name Save
-var savePath: String = "user://save.bin"
+var savePath: String = "user://saves/slot1.bin"
 
 static var Settings: Dictionary = {
 	"fps": 64.0,
 	"volume": 0.8,
 	"windowMode": DisplayServer.WINDOW_MODE_WINDOWED,
-	"noteColors": []
+	"noteRGB": [
+	[Color("ff0000ff"), Color("00ff00ff"), Color("0000ffff")],
+	[Color("ff0000ff"), Color("00ff00ff"), Color("0000ffff")],
+[Color("ff0000ff"), Color("00ff00ff"), Color("0000ffff")],
+[Color("ff0000ff"), Color("00ff00ff"), Color("0000ffff")]
+	],
+	"noteskin":"NOTE_assets"
+
 }
 
 func _init() -> void:

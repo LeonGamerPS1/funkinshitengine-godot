@@ -18,21 +18,24 @@ var aliveNotes: Array[Note] = []
 var deadSplashes: Array[Splash] = []
 var aliveSplashes: Array[Splash] = []
 
+var DefaultStrumResetTime = 4 / 24.0
+
 
 
 func _ready() -> void:
+
 	Conductor.events.on_step.connect(stepHit)
 	var strum_width: float = 160.0 * 0.7
 	var total_width: float = strum_width * strums
 	var start_x: float = -(total_width / 2.0) + (strum_width / 2.0)
-
+	var magic = 0
 	for i in range(strums):
 		var strum: Strum = Strum.new()
 		strum.init(i)
 		
-		strum.position.x = start_x + (strum_width * i)
+		strum.position.x = start_x + magic
 		strum.position.y = 40
-		
+		magic += strum.sprite_frames.get_frame_texture(strum.animation, 0).get_width() * strum.scale.x
 		strumArray.push_back(strum)
 		add_child(strum)
 
@@ -60,7 +63,7 @@ func _process(_delta: float) -> void:
 			note.setup(data, strum, speed)
 			note.cpu = isOpponentSide
 			aliveNotes.append(note)
-			note.sustainContainer.rotation_degrees = 180 if downscroll else 0
+			#note.sustainContainer.rotation_degrees = 180 if downscroll else 0
 			noteDatas.remove_at(0) 
 		else:
 			break 
@@ -80,7 +83,6 @@ func _process(_delta: float) -> void:
 		if note.hit and !isOpponentSide and !strum.holding:
 			note.missed = true
 			note.hit = false
-			note.sustainContainer.modulate.a = .4
 		
 		note.position = strum.position
 		
@@ -122,7 +124,13 @@ func hitNote(note:Note):
 		strum.confirm()
 		doCharAnim(note)
 		if(note.cpu):
-			strum.r = Conductor.step_length * 1.1 / 1000
+			strum.r = DefaultStrumResetTime
+		#	var splash = getSplashFromDump()
+		#	splash.spawn(note, note.lane)
+	#		add_child(splash)
+		#	if not splash.kill.is_connected(splashEnd):
+		#		splash.kill.connect(splashEnd)
+			
 	
 	
 	if not isOpponentSide and not hitDir.has(note.lane):
@@ -229,7 +237,7 @@ func stepHit(_step:int):
 			strum.confirm()
 			noteHit.emit(note, self)
 			if note.cpu:
-				strum.r = Conductor.step_length * 1.24 / 1000
+				strum.r = DefaultStrumResetTime
 			
 func _exit_tree() -> void:
 	Conductor.events.on_step.disconnect(stepHit)

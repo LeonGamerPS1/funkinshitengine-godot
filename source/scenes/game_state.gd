@@ -9,9 +9,10 @@ var voices:AudioStreamPlayer2D
 @export var characters:Array[Character]
 @export var downscroll = false
 @onready var camHUD:CanvasLayer = $camHUD
-@onready var camGame:Camera2D = $camFollow/Camera2D
+@onready var camGame:Camera2D = $camFollow/Node2D/Camera2D
+@onready var camGameOffset:Node2D = $camFollow/Node2D
 @export var healthBar:HealthBar
-@export var timeBar:HealthBar
+
 @export var iconP1:Array[Sprite2D] = []
 @export var iconP2:Array[Sprite2D] = []
 var timeTxt:Label
@@ -24,14 +25,13 @@ var health = 1
 
 
 func _ready() -> void:
-	timeTxt = timeBar.get_node("progress text")
-	timeBar.modulate.a = 0
+	timeTxt = get_node("camHUD/Node2D/progress text")
+
 	startCountdown()
-	song = Song.loadFromJson('hard', 'manifest')
+	song = Song.loadFromJson('hard', 'ayoeth')
 	inst.stream = AudioUtil.load_stream(AudioUtil.add_audio_ext('res://assets/songs/' + str(song.song).to_lower().replace(' ','-')) + '/Inst')
 	voices.stream = AudioUtil.load_stream(AudioUtil.add_audio_ext('res://assets/songs/' + str(song.song).to_lower().replace(' ','-')) + '/Voices')
-	timeBar.value = 0
-	timeBar.max_value = voices.stream.get_length()
+
 	Conductor.bpm = song.bpm
 
 	Conductor.time = -Conductor.beat_length * 5
@@ -68,8 +68,7 @@ func startSong():
 		return
 	startedSong = true
 	inst.play(0)
-	var tween = timeBar.create_tween()
-	tween.tween_property(timeBar, 'modulate:a', 1, 1)
+
 
 	voices.play(inst.get_playback_position())
 
@@ -112,12 +111,12 @@ func _process(_delta: float) -> void:
 	var inst_pos = inst.get_playback_position()
 	if(inst.playing):
 
-		timeBar.value = inst_pos
+
 
 		var song_name: String = song.song
 		var difficulty: String = "HARD"
-		var current_seconds: float = timeBar.value
-		var total_seconds: float = timeBar.max_value
+		var current_seconds: float = inst_pos
+		var total_seconds: float = inst.stream.get_length()
 
 
 		var cur_min: float = current_seconds / 60.0
@@ -148,11 +147,12 @@ func _process(_delta: float) -> void:
 		Conductor.time += _delta * 1000
 		if(Conductor.time >= 0):
 			startSong()
-			
-
+var e = 20
+var camOffsets = [Vector2(-e,0),Vector2(0,e),Vector2(0,-e),Vector2(e,0)]
 func hitNote(note:Note, strumline:StrumLine):
 	if not note.cpu:
 		health += 0.023
+	camGameOffset.position = camOffsets[note.lane]
 		
 func missNote(note:Note, strumline:StrumLine):
 	health -= 0.047 * 2

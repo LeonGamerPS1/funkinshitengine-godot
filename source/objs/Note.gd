@@ -13,25 +13,39 @@ var lH = 1
 var lengthSus = 0
 var sustain:TextureRect
 var endPiece:Sprite2D
-var sustainContainer:Node2D
+
 var missed = false
 func _ready() -> void:
-	sustainContainer = Node2D.new()
-	add_child(sustainContainer)
+
 	sustain = TextureRect.new()
 	endPiece = Sprite2D.new()
 	endPiece.scale.x = 1
-	sustainContainer.show_behind_parent = true
-	sustainContainer.position.y = 0
-	sustain.self_modulate.a = .7
-	endPiece.self_modulate = sustain.self_modulate
+
+
+
+	endPiece.scale.y = .5
 	sustain.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	
 	scale = Vector2(.7, .7)
 
-	sustainContainer.add_child(sustain)
-	sustainContainer.add_child(endPiece)
+	sustain.use_parent_material = true
+	sustain.show_behind_parent = true
+
+	endPiece.use_parent_material = true
+	add_child(endPiece)
+	add_child(sustain)
+
+	material = load('res://assets/shaders/noteRGB.material')
+
+	
+	set_instance_shader_parameter("use", true)
+	sustain.set_instance_shader_parameter("use", true)
+	endPiece.set_instance_shader_parameter("use", true)
+	sustain.set_instance_shader_parameter('alpha', .9)
+	endPiece.set_instance_shader_parameter('alpha', .9)
 
 func setup(_data:Array[Variant], strum:Strum, _speed:float = 21):
+	
 	if not sprite_frames and not strum:
 		sprite_frames = load('res://assets/ui/notes/NOTE_assets.xml')
 	elif not sprite_frames and strum:
@@ -40,15 +54,19 @@ func setup(_data:Array[Variant], strum:Strum, _speed:float = 21):
 	missed = false
 	data = _data
 	lane = int(data[1]) % 4
+	var rgb = Save.Settings.get('noteRGB')[lane]
+	applyRGB(self, rgb[0],rgb[1],rgb[2])
+	applyRGB(sustain, rgb[0],rgb[1],rgb[2])
+	applyRGB(endPiece,rgb[0],rgb[1],rgb[2])
+
 	
-	sustainContainer.modulate.a = 1
 	self_modulate.a = 1
+
 	sustain.texture = sprite_frames.get_frame_texture(colors[lane] + ' hold piece', 0)
 	endPiece.texture = sprite_frames.get_frame_texture(colors[lane] + ' hold end', 0)
 	play(colors[lane])
 	lengthSus = data[2]
-	sustainContainer.visible = lengthSus > 0
-	sustainContainer.show_behind_parent = true
+
 	if(lengthSus > 0):
 			sustain.visible = true
 			endPiece.visible = true
@@ -63,13 +81,14 @@ func setup(_data:Array[Variant], strum:Strum, _speed:float = 21):
 			endPiece.visible = false
 
 		
-	
+
 func updateSusLength(speed:float  = 1):
 	var o = 0.0
 	if hit and !missed:
 		o =  Conductor.time-data[0]
 		self_modulate.a = 0
-	var sus_height = round(0.45 * speed * (data[2] - o)) - 50
+
+	var sus_height = round(0.45 * speed * (data[2] - o)) + endPiece.offset.y
 	sustain.size.x = sustain.texture.get_width()
 	sustain.size.y = sus_height / .7
 	sustain.position.x = -sustain.size.x / 2
@@ -102,3 +121,9 @@ func updateSusLength(speed:float  = 1):
 	
 func _process(_delta: float) -> void:
 	inHitZone = data[0] <= Conductor.time + (166 * eH) and data[0] >= Conductor.time - (166 * lH)
+	
+	
+static func applyRGB(spr:CanvasItem, r,g,b):
+	spr.set_instance_shader_parameter('red', r)
+	spr.set_instance_shader_parameter('green', g)
+	spr.set_instance_shader_parameter('blue', b)
