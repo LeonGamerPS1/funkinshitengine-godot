@@ -10,20 +10,17 @@
 [ext_resource type="Texture2D" uid="uid://blnprjqrdqhrt" path="res://assets/images/week1/stageback.png" id="9_texsc"]
 [ext_resource type="Texture2D" uid="uid://v8tr0qojswkk" path="res://assets/images/week1/stagefront.png" id="10_ass06"]
 [ext_resource type="PackedScene" uid="uid://b4jvavp4h1sh6" path="res://source/objs/strumline.tscn" id="10_vm2na"]
-[ext_resource type="PackedScene" uid="uid://dk2scu8cqasme" path="res://source/objs/chars/dad.tscn" id="12_ass06"]
-[ext_resource type="PackedScene" uid="uid://boqdcnp3aemm3" path="res://source/objs/chars/gf-pixel.tscn" id="12_w6hjx"]
-[ext_resource type="PackedScene" uid="uid://dydo4jhhsplpl" path="res://source/objs/chars/bf.tscn" id="13_wnnob"]
 
-[node name="Node2D" type="Node2D" unique_id=112801622 node_paths=PackedStringArray("inst", "voices", "strumLines", "characters", "healthBar", "iconP1", "iconP2")]
+[node name="Node2D" type="Node2D" unique_id=112801622 node_paths=PackedStringArray("inst", "voices", "strumLines", "healthBar", "iconP1", "iconP2", "stage")]
 process_mode = 3
 script = ExtResource("1_ewn2p")
 inst = NodePath("inst")
 voices = NodePath("voices")
 strumLines = [NodePath("camHUD/Node2D/strumlines/0"), NodePath("camHUD/Node2D/strumlines/1")]
-characters = [NodePath("dad"), NodePath("bf")]
 healthBar = NodePath("camHUD/Node2D/healthbar")
 iconP1 = [NodePath("camHUD/Node2D/healthbar/icons/iconP1")]
 iconP2 = [NodePath("camHUD/Node2D/healthbar/icons/iconP2")]
+stage = NodePath("stage")
 
 [node name="camHUD" type="CanvasLayer" parent="." unique_id=996848151]
 offset = Vector2(640, 360)
@@ -48,14 +45,12 @@ horizontal_alignment = 1
 [node name="strumlines" type="Node2D" parent="camHUD/Node2D" unique_id=389750993]
 position = Vector2(0, 16)
 
-[node name="0" parent="camHUD/Node2D/strumlines" unique_id=1975566649 node_paths=PackedStringArray("character") instance=ExtResource("10_vm2na")]
+[node name="0" parent="camHUD/Node2D/strumlines" unique_id=1975566649 instance=ExtResource("10_vm2na")]
 position = Vector2(320, 50)
-character = NodePath("../../../../dad")
 
-[node name="1" parent="camHUD/Node2D/strumlines" unique_id=109666557 node_paths=PackedStringArray("character") instance=ExtResource("10_vm2na")]
+[node name="1" parent="camHUD/Node2D/strumlines" unique_id=109666557 instance=ExtResource("10_vm2na")]
 position = Vector2(960, 50)
 isOpponentSide = false
-character = NodePath("../../../../bf")
 
 [node name="healthbar" type="TextureProgressBar" parent="camHUD/Node2D" unique_id=1001578737]
 texture_filter = 1
@@ -96,6 +91,11 @@ region_filter_clip_enabled = true
 
 [node name="stage" type="Node2D" parent="." unique_id=724064643]
 script = ExtResource("8_texsc")
+dadPos = Vector2(100, 100)
+gfPos = Vector2(400, 130)
+bfPos = Vector2(770, 100)
+stageName = "stage"
+defaultCamZoom = 0.9
 
 [node name="Parallax2D2" type="Parallax2D" parent="stage" unique_id=2111602401]
 scroll_scale = Vector2(0.9, 0.9)
@@ -124,16 +124,6 @@ limit_enabled = false
 position_smoothing_enabled = true
 position_smoothing_speed = 2.5
 rotation_smoothing_enabled = true
-
-[node name="gf" parent="." unique_id=1648963714 instance=ExtResource("12_w6hjx")]
-position = Vector2(727, 536)
-
-[node name="dad" parent="." unique_id=239338355 instance=ExtResource("12_ass06")]
-texture_repeat = 1
-position = Vector2(322, 532.25)
-
-[node name="bf" parent="." unique_id=843374013 instance=ExtResource("13_wnnob")]
-position = Vector2(919.75, 686)
 
 [node name="inst" type="AudioStreamPlayer2D" parent="." unique_id=29897622]
 position = Vector2(617, 444)

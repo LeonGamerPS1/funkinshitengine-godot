@@ -15,6 +15,7 @@ var voices:AudioStreamPlayer2D
 
 @export var iconP1:Array[Sprite2D] = []
 @export var iconP2:Array[Sprite2D] = []
+@export var stage:Stage
 var timeTxt:Label
 
 static var song:Variant
@@ -25,10 +26,41 @@ var health = 1
 
 
 func _ready() -> void:
+	song = Song.loadFromJson('hard', 'manifest')
+	if not stage:
+		stage = Stage.new()
+		stage.stageName = song.stage
+		if not stage.stageName:
+			stage.stageName = ''
+		add_child(stage)
+	stage.name = 'stage-' + stage.stageName
+	
+	var dad =  Character.loadChar(song.player2)
+	var bf = Character.loadChar(song.player1)
+	characters.append(dad)
+	characters.append(bf)
+	# strumline char stuff
+	strumLines[0].character = dad
+	strumLines[1].character = bf
+	
+	if dad:
+		dad.position = stage.dadPos + dad.posOffset
+		dad.isPlayer = false
+		add_child(dad)
+	if bf:
+		bf.position = stage.bfPos + bf.posOffset
+		bf.isPlayer = true
+		add_child(bf)
+	
+
+	
+	
+	
+	
 	timeTxt = get_node("camHUD/Node2D/progress text")
 
 	startCountdown()
-	song = Song.loadFromJson('hard', 'ayoeth')
+
 	inst.stream = AudioUtil.load_stream(AudioUtil.add_audio_ext('res://assets/songs/' + str(song.song).to_lower().replace(' ','-')) + '/Inst')
 	voices.stream = AudioUtil.load_stream(AudioUtil.add_audio_ext('res://assets/songs/' + str(song.song).to_lower().replace(' ','-')) + '/Voices')
 
@@ -58,6 +90,7 @@ func _ready() -> void:
 		i.sor1()
 		i.noteHit.connect(hitNote)
 		i.noteMiss.connect(missNote)
+		
 		
 	
 func startCountdown():

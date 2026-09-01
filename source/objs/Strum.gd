@@ -36,7 +36,9 @@ func press():
 func idle():
 	play('arrow' + animations[dir %  animations.size()].to_upper())
 	set_instance_shader_parameter('use', false)
+
 func _process(delta: float) -> void:
+
 	if(r != 0):
 		r -= delta
 		if(r < 0):

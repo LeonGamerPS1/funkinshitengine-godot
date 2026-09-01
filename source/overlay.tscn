@@ -28,7 +28,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(640, -292.00003)]
+"values": [Vector2(640, -294)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -45,7 +45,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_j2gw6"]
 resource_name = "slidein"
-length = 0.3
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -56,12 +56,12 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(640, -292.00003), Vector2(640, 496)]
+"values": [Vector2(640, -320), Vector2(640, 496)]
 }
 
 [sub_resource type="Animation" id="Animation_8b1ca"]
 resource_name = "slideout"
-length = 0.3
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -72,7 +72,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(640, 496), Vector2(640, 1296)]
+"values": [Vector2(640, 496), Vector2(640, 1356)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8b1ca"]
@@ -96,7 +96,7 @@ grow_vertical = 2
 script = ExtResource("1_j2gw6")
 
 [node name="trans" type="Sprite2D" parent="." unique_id=1307707209]
-position = Vector2(640, -292.00003)
+position = Vector2(640, -294)
 rotation = 1.5707964
 scale = Vector2(0.9, 1280)
 texture = SubResource("GradientTexture2D_6livi")

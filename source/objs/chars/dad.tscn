@@ -8,6 +8,7 @@ sprite_frames = ExtResource("1_6o6lx")
 animation = &"Dad idle dance"
 script = ExtResource("2_ex3lo")
 camPos = Vector2(150, -100)
+posOffset = Vector2(200, 340)
 anim_config = Dictionary[String, Dictionary]({
 "down": {
 "fps": 24.0,
