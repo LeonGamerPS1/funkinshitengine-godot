@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://7cc63e8qwmvs"]
+
+[ext_resource type="Texture2D" uid="uid://drqcebgg5pwpd" path="res://assets/ui/menuDesat.png" id="1_v0nkm"]
+
+[node name="freeplay" type="Node2D" unique_id=1809657621]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1811675676]
+position = Vector2(640, 360)
+texture = ExtResource("1_v0nkm")
+flip_h = true

@@ -10,6 +10,7 @@ sprite_frames = ExtResource("1_or25x")
 animation = &"GF IDLE"
 script = ExtResource("2_hr8vs")
 isDancer = true
+icon = "gf"
 anim_config = Dictionary[String, Dictionary]({
 "": {},
 "danceLEFT": {

@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/NOTE_assets.xml-5148f5f8a530b8584789d2bd83b1a
 
 [params]
 
-use_offsets=false
+use_offsets=true
 animation_framerate=24
 animations_looped=false
 store_external_spriteframes=false

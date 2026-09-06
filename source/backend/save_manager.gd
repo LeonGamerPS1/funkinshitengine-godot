@@ -1,5 +1,6 @@
 extends Node
 class_name Save
+
 var savePath: String = "user://saves/slot1.bin"
 
 static var Settings: Dictionary = {
@@ -7,19 +8,22 @@ static var Settings: Dictionary = {
 	"volume": 0.8,
 	"windowMode": DisplayServer.WINDOW_MODE_WINDOWED,
 	"noteRGB": [
-	[Color("ff0000ff"), Color("00ff00ff"), Color("0000ffff")],
-	[Color("ff0000ff"), Color("00ff00ff"), Color("0000ffff")],
-[Color("ff0000ff"), Color("00ff00ff"), Color("0000ffff")],
-[Color("ff0000ff"), Color("00ff00ff"), Color("0000ffff")]
+		[Color("ff0000ff"), Color("00ff00ff"), Color("0000ffff")],
+		[Color("ff0000ff"), Color("00ff00ff"), Color("0000ffff")],
+		[Color("ff0000ff"), Color("00ff00ff"), Color("0000ffff")],
+		[Color("ff0000ff"), Color("00ff00ff"), Color("0000ffff")]
 	],
-	"noteskin":"NOTE_assets"
-
+	"noteskin": "NOTE_assets"
 }
 
 func _init() -> void:
 	load_data()
 	
 func save():
+	var dir_path = savePath.get_base_dir()
+	if not DirAccess.dir_exists_absolute(dir_path):
+		DirAccess.make_dir_recursive_absolute(dir_path)
+
 	var file = FileAccess.open(savePath, FileAccess.WRITE)
 	if file:
 		for key in Settings:
@@ -36,7 +40,6 @@ func onSafeFileLoad():
 	
 func load_data():
 	if not FileAccess.file_exists(savePath):
-		print('no safe file found in ' + OS.get_user_data_dir() + '/save.bin')
 		return
 
 	var file = FileAccess.open(savePath, FileAccess.READ)

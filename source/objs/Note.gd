@@ -10,32 +10,36 @@ var cpu = false
 var frameHeight = 0
 var eH = 1
 var lH = 1
-var lengthSus = 0
+var lengthSus:float = 0
 var sustain:TextureRect
 var endPiece:Sprite2D
 
 var missed = false
+static var noteMat:Material
+var susCont:Node2D
 func _ready() -> void:
-
+	susCont = Node2D.new()
+	add_child(susCont)
 	sustain = TextureRect.new()
 	endPiece = Sprite2D.new()
 	endPiece.scale.x = 1
 
 
 
-	endPiece.scale.y = .5
 	sustain.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	
 	scale = Vector2(.7, .7)
 
-	sustain.use_parent_material = true
-	sustain.show_behind_parent = true
 
-	endPiece.use_parent_material = true
-	add_child(endPiece)
-	add_child(sustain)
+	susCont.show_behind_parent = true
 
-	material = load('res://assets/shaders/noteRGB.material')
+
+	susCont.add_child(endPiece)
+	susCont.add_child(sustain)
+	
+	if not noteMat:
+		noteMat = load("res://assets/shaders/noteRGB.material")
+	material = noteMat
 
 	
 	set_instance_shader_parameter("use", true)
@@ -54,10 +58,7 @@ func setup(_data:Array[Variant], strum:Strum, _speed:float = 21):
 	missed = false
 	data = _data
 	lane = int(data[1]) % 4
-	var rgb = Save.Settings.get('noteRGB')[lane]
-	applyRGB(self, rgb[0],rgb[1],rgb[2])
-	applyRGB(sustain, rgb[0],rgb[1],rgb[2])
-	applyRGB(endPiece,rgb[0],rgb[1],rgb[2])
+
 
 	
 	self_modulate.a = 1
@@ -65,9 +66,14 @@ func setup(_data:Array[Variant], strum:Strum, _speed:float = 21):
 	sustain.texture = sprite_frames.get_frame_texture(colors[lane] + ' hold piece', 0)
 	endPiece.texture = sprite_frames.get_frame_texture(colors[lane] + ' hold end', 0)
 	play(colors[lane])
-	lengthSus = data[2]
-
+	lengthSus = data[2] if not data[2] is String else 0
+	
+	var rgb = Save.Settings.get('noteRGB')[lane]
 	if(lengthSus > 0):
+			applyRGB(sustain, rgb[0],rgb[1],rgb[2])
+			applyRGB(endPiece,rgb[0],rgb[1],rgb[2])
+			endPiece.material = noteMat
+			sustain.material = noteMat
 			sustain.visible = true
 			endPiece.visible = true
 
@@ -79,16 +85,21 @@ func setup(_data:Array[Variant], strum:Strum, _speed:float = 21):
 	else:
 			sustain.visible = false
 			endPiece.visible = false
+			
+
+	applyRGB(self, rgb[0],rgb[1],rgb[2])
+	
 
 		
 
 func updateSusLength(speed:float  = 1):
 	var o = 0.0
+	
 	if hit and !missed:
 		o =  Conductor.time-data[0]
 		self_modulate.a = 0
-
-	var sus_height = round(0.45 * speed * (data[2] - o)) + endPiece.offset.y
+	var tex_h = endPiece.texture.get_height()
+	var sus_height = round(0.45 * speed * (data[2] - o)) + endPiece.offset.y - (tex_h * endPiece.scale.y / 2.0 )
 	sustain.size.x = sustain.texture.get_width()
 	sustain.size.y = sus_height / .7
 	sustain.position.x = -sustain.size.x / 2
@@ -96,7 +107,7 @@ func updateSusLength(speed:float  = 1):
 	
 	# --- CLIPPING LOGIC FOR SPRITE2D ENDPIECE ---
 	if sus_height < 0:
-		var tex_h = endPiece.texture.get_height()
+
 		# Convert the negative pixel height into how much of the sprite should stay visible
 		var visible_height = round(tex_h + (sus_height / .7 / endPiece.scale.y))
 		

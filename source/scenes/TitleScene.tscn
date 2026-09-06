@@ -3,14 +3,12 @@
 [ext_resource type="Script" uid="uid://cpfwwuyv3wgea" path="res://source/scenes/title_scene.gd" id="1_0vdpi"]
 [ext_resource type="SpriteFrames" uid="uid://bmg4aumjsw7ye" path="res://assets/images/menus/titlescreen/gf.xml" id="1_a2j07"]
 [ext_resource type="Script" uid="uid://bvplvbdqckn6f" path="res://source/objs/spamfolder/playanimstart.gd" id="2_l2lem"]
-[ext_resource type="AudioStream" uid="uid://c0s42ab2qm1wa" path="res://assets/music/freakyMenu.ogg" id="3_cg51x"]
 [ext_resource type="SpriteFrames" uid="uid://c37t0htn784y8" path="res://assets/images/menus/titlescreen/logo.xml" id="5_sio3s"]
 [ext_resource type="SpriteFrames" uid="uid://brleut3csm2fv" path="res://assets/images/menus/titlescreen/titleEnter.xml" id="6_yjkck"]
 
-[node name="Title" type="Node2D" unique_id=1259629495 node_paths=PackedStringArray("logo", "music")]
+[node name="Title" type="Node2D" unique_id=1259629495 node_paths=PackedStringArray("logo")]
 script = ExtResource("1_0vdpi")
 logo = NodePath("logo")
-music = NodePath("music")
 
 [node name="gf" type="AnimatedSprite2D" parent="." unique_id=204925051]
 oversampling_with_scale = 1
@@ -21,11 +19,6 @@ speed_scale = 0.9
 script = ExtResource("2_l2lem")
 startAnim = "gfDance"
 loopIt = true
-
-[node name="music" type="AudioStreamPlayer2D" parent="." unique_id=1606966087]
-position = Vector2(963, 452)
-stream = ExtResource("3_cg51x")
-autoplay = true
 
 [node name="logo" type="AnimatedSprite2D" parent="." unique_id=712670021]
 position = Vector2(344, 240)

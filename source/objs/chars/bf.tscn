@@ -10,6 +10,7 @@ script = ExtResource("2_k3p1r")
 camPos = Vector2(-100, -100)
 posOffset = Vector2(240, 540)
 flipX = true
+icon = "bf"
 anim_config = Dictionary[String, Dictionary]({
 "down": {
 "fps": 24.0,

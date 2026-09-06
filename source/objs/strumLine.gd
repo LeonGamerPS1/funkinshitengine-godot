@@ -18,7 +18,7 @@ var aliveNotes: Array[Note] = []
 var deadSplashes: Array[Splash] = []
 var aliveSplashes: Array[Splash] = []
 
-var DefaultStrumResetTime = 4 / 24.0
+var DefaultStrumResetTime = 0.15
 
 
 
@@ -44,8 +44,7 @@ func addNoteArray(array: Array[Variant]):
 	var length = array[2]
 	
 	if length is float or length is int:
-		if length > 0:
-			pass
+		array[2] = length - Conductor.step_length / 2
 
 
 
@@ -63,7 +62,7 @@ func _process(_delta: float) -> void:
 			note.setup(data, strum, speed)
 			note.cpu = isOpponentSide
 			aliveNotes.append(note)
-			#note.sustainContainer.rotation_degrees = 180 if downscroll else 0
+			note.susCont.rotation_degrees = 180 if downscroll else 0
 			noteDatas.remove_at(0) 
 		else:
 			break 
@@ -127,7 +126,7 @@ func hitNote(note:Note):
 			strum.r = DefaultStrumResetTime
 		#	var splash = getSplashFromDump()
 		#	splash.spawn(note, note.lane)
-	#		add_child(splash)
+		#	add_child(splash)
 		#	if not splash.kill.is_connected(splashEnd):
 		#		splash.kill.connect(splashEnd)
 			
@@ -241,3 +240,12 @@ func stepHit(_step:int):
 			
 func _exit_tree() -> void:
 	Conductor.events.on_step.disconnect(stepHit)
+	for splash in deadSplashes:
+		splash.free()
+		
+		
+	deadSplashes.resize(0)
+	
+	for n in deadNotes:
+		n.free()
+	deadNotes.resize(0)

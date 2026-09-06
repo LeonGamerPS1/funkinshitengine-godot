@@ -25,8 +25,11 @@ var startedSong = false
 var health = 1
 
 
+
+
 func _ready() -> void:
-	song = Song.loadFromJson('hard', 'manifest')
+	if not song:
+		song = Song.loadFromJson('hard', 'ayoeth')
 	if not stage:
 		stage = Stage.new()
 		stage.stageName = song.stage
@@ -52,7 +55,13 @@ func _ready() -> void:
 		bf.isPlayer = true
 		add_child(bf)
 	
-
+	var ip1:Sprite2D = iconP1[0]
+	var ip2:Sprite2D = iconP2[0]
+	
+	if ip1 and bf:
+		ip1.texture = loadIcon(bf.icon)
+	if ip2 and dad:
+		ip2.texture = loadIcon(dad.icon)
 	
 	
 	
@@ -157,7 +166,7 @@ func _process(_delta: float) -> void:
 		var tot_min: float = total_seconds / 60.0
 		var tot_sec: int = int(total_seconds) % 60
 
-		timeTxt.text = "%s - %s  (%d:%02f / %d:%02d)" % [
+		timeTxt.text = "%s - %s  (%d:%2d / %d:%2d)" % [
 		song_name, 
 		difficulty, 
 		cur_min, 
@@ -182,12 +191,12 @@ func _process(_delta: float) -> void:
 			startSong()
 var e = 20
 var camOffsets = [Vector2(-e,0),Vector2(0,e),Vector2(0,-e),Vector2(e,0)]
-func hitNote(note:Note, strumline:StrumLine):
+func hitNote(note:Note, _strumline:StrumLine):
 	if not note.cpu:
 		health += 0.023
 	camGameOffset.position = camOffsets[note.lane]
 		
-func missNote(note:Note, strumline:StrumLine):
+func missNote(_note:Note, _strumline:StrumLine):
 	health -= 0.047 * 2
 	
 func updateIcon(icon:Sprite2D, player:bool, percent:float):
@@ -208,5 +217,8 @@ func updateIcon(icon:Sprite2D, player:bool, percent:float):
 		
 func onDeath():
 	Transition.switchScene('res://source/scenes/GameState.tscn')
+	
+static func loadIcon(icon:String) -> Texture2D:
+	return load('res://assets/ui/icons/icon-' + icon + '.png')
 
 	

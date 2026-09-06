@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://s3g7qk7dnpen" path="res://source/scenes/game_state.gd" id="1_ewn2p"]
 [ext_resource type="Texture2D" uid="uid://bi8gukr602xj6" path="res://assets/ui/healthBar.png" id="2_4kcx6"]
 [ext_resource type="Script" uid="uid://b2iq376g2c37j" path="res://source/objs/healthbar.gd" id="3_4kcx6"]
-[ext_resource type="Texture2D" uid="uid://yoq0l8wjrfgw" path="res://assets/ui/icons/icon-bf.png" id="6_7rm5y"]
 [ext_resource type="Script" uid="uid://d16r7nj83emeh" path="res://source/objs/Stage.gd" id="8_texsc"]
 [ext_resource type="FontFile" uid="uid://67waa354s0lt" path="res://assets/fnts/vcr.ttf" id="9_d1mkr"]
 [ext_resource type="Texture2D" uid="uid://blnprjqrdqhrt" path="res://assets/images/week1/stageback.png" id="9_texsc"]
@@ -17,6 +16,7 @@ script = ExtResource("1_ewn2p")
 inst = NodePath("inst")
 voices = NodePath("voices")
 strumLines = [NodePath("camHUD/Node2D/strumlines/0"), NodePath("camHUD/Node2D/strumlines/1")]
+downscroll = true
 healthBar = NodePath("camHUD/Node2D/healthbar")
 iconP1 = [NodePath("camHUD/Node2D/healthbar/icons/iconP1")]
 iconP2 = [NodePath("camHUD/Node2D/healthbar/icons/iconP2")]
@@ -77,7 +77,6 @@ position = Vector2(300.5, -75)
 [node name="iconP1" type="Sprite2D" parent="camHUD/Node2D/healthbar/icons" unique_id=138033593]
 texture_filter = 2
 position = Vector2(43, 75)
-texture = ExtResource("6_7rm5y")
 flip_h = true
 hframes = 2
 
@@ -85,7 +84,6 @@ hframes = 2
 oversampling_with_scale = 1
 texture_filter = 2
 position = Vector2(-43, 75)
-texture = ExtResource("6_7rm5y")
 hframes = 2
 region_filter_clip_enabled = true
 
@@ -114,7 +112,7 @@ scroll_scale = Vector2(1.2, 1.2)
 scroll_offset = Vector2(-5, 103)
 
 [node name="camFollow" type="Node2D" parent="." unique_id=1661667835]
-position = Vector2(354, 496)
+position = Vector2(640, 360)
 
 [node name="Node2D" type="Node2D" parent="camFollow" unique_id=1057725433]
 

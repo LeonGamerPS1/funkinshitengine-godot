@@ -11,8 +11,9 @@ func spawn(target:Node2D, dire:int = 0):
 	if not sprite_frames:
 		sprite_frames = load("res://assets/ui/splashes/noteSplashes.xml")
 	dir = dire
-	position = target.position - Vector2(10,10)
-	play('splash ' + Strum.animations[dir])
+	position = target.position
+	
+	play('note impact ' + str(randi_range(1,2)) + ' ' + Note.colors[dir])
 	return self
 func finished():
 	kill.emit(self)

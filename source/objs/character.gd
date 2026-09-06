@@ -8,6 +8,7 @@ static var singAnims = ['left','down','up','right']
 @export var baseScale:Vector2 = Vector2.ONE
 @export var isPlayer:bool = false
 @export var flipX:bool = false
+@export var icon:String = "dad"
 # Wir nennen es temporär anders ("anim_config" statt "animationMap")
 @export var anim_config: Dictionary[String, Dictionary] = {
 	"idle": { "fps": 24.0, "prefix": "", "name": "", "offsets": [0,0] },
@@ -52,8 +53,8 @@ func _exit_tree() -> void:
 static func loadChar(charName:String) -> Character:
 	var pathTSCN = 'res://source/objs/chars/' + charName + '.tscn'
 	var pathTSCNFS = 'fs://mods/chars/' + charName + '.tscn'
-	var pathJSONFS = 'fs://mods/chars/' + charName + '.json'
-	var pathJSON = 'res://assets/chars/' + charName + '.json'
+	#var pathJSONFS = 'fs://mods/chars/' + charName + '.json'
+	#var pathJSON = 'res://assets/chars/' + charName + '.json'
 	var chara:Character = null
 	if(ResourceLoader.exists(pathTSCN)):
 		chara = load(pathTSCN).instantiate()

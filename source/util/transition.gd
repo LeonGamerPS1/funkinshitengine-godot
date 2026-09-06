@@ -6,6 +6,7 @@ static var animplayer:AnimationPlayer
 func _ready() -> void:
 	i = self
 	animplayer = $AnimationPlayer
+	visible = false
 
 static func switchScene(scene):
 	i.visible = true

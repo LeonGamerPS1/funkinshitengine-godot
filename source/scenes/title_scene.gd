@@ -3,7 +3,7 @@ extends Node2D
 class_name Title
 
 @export var logo:AnimatedSprite2D
-@export var music:AudioStreamPlayer2D
+var music:AudioStreamPlayer2D
 @onready var enter:AnimatedSprite2D = $enter
 @onready var gf:AnimatedSprite2D = $gf
 func _ready() -> void:
@@ -12,6 +12,7 @@ func _ready() -> void:
 	enter.sprite_frames.set_animation_loop('Press Enter to Begin', true)
 	enter.sprite_frames.set_animation_loop('ENTER PRESSED', true)
 	enter.play("Press Enter to Begin")
+	music = Transition.i.get_parent().get_node("music")
 	
 func beat(b:int = 0):
 	logo.frame = 0
@@ -30,4 +31,4 @@ func _process(_delta: float) -> void:
 		enter.play("ENTER PRESSED")
 		CameraFlash.flash(1, Color(1.0, 1.0, 1.0, 1.0))
 		await get_tree().create_timer(1.0).timeout
-		Transition.switchScene('res://source/scenes/GameState.tscn')
+		Transition.switchScene('res://source/scenes/MainMenu.tscn')

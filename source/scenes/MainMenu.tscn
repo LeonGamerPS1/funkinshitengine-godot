@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bprw1a5a60blk"]
+
+[ext_resource type="Script" uid="uid://loy2khquivk4" path="res://source/scenes/main_menu.gd" id="1_ekh2p"]
+[ext_resource type="Texture2D" uid="uid://oad606bu3nnc" path="res://assets/ui/menuBG.png" id="1_turx0"]
+[ext_resource type="SpriteFrames" uid="uid://bbq2mfhavh7a0" path="res://assets/images/menus/mainmenu/story mode.xml" id="2_6632i"]
+[ext_resource type="SpriteFrames" uid="uid://020j05paywqs" path="res://assets/images/menus/mainmenu/freeplay.xml" id="3_ekh2p"]
+[ext_resource type="SpriteFrames" uid="uid://4jpcx5yp3ye5" path="res://assets/images/menus/mainmenu/donate.xml" id="4_0enta"]
+[ext_resource type="SpriteFrames" uid="uid://cby37wa3jsrmi" path="res://assets/images/menus/mainmenu/options.xml" id="5_mshoh"]
+
+[node name="mainMenu" type="Node2D" unique_id=2029773219 node_paths=PackedStringArray("items")]
+script = ExtResource("1_ekh2p")
+items = NodePath("items/Items")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1824029350]
+scroll_scale = Vector2(0.2, 0.2)
+
+[node name="BG" type="Sprite2D" parent="Parallax2D" unique_id=1397395190]
+position = Vector2(640, 360)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_turx0")
+
+[node name="items" type="Parallax2D" parent="." unique_id=412092585]
+scroll_scale = Vector2(0.7, 0.7)
+
+[node name="Items" type="Node2D" parent="items" unique_id=1978659091]
+position = Vector2(640, 180)
+
+[node name="story" type="AnimatedSprite2D" parent="items/Items" unique_id=319447319]
+clip_children = 2
+sprite_frames = ExtResource("2_6632i")
+animation = &"basic"
+
+[node name="freeplay" type="AnimatedSprite2D" parent="items/Items" unique_id=350725581]
+position = Vector2(0, 128)
+sprite_frames = ExtResource("3_ekh2p")
+animation = &"basic"
+
+[node name="donate" type="AnimatedSprite2D" parent="items/Items" unique_id=903079793]
+position = Vector2(0, 256)
+sprite_frames = ExtResource("4_0enta")
+animation = &"basic"
+
+[node name="options" type="AnimatedSprite2D" parent="items/Items" unique_id=1915146233]
+position = Vector2(0, 384)
+sprite_frames = ExtResource("5_mshoh")
+animation = &"basic"
+
+[node name="camFollow" type="Node2D" parent="." unique_id=668038672]
+position = Vector2(640, 360)
+
+[node name="Camera2D" type="Camera2D" parent="camFollow" unique_id=1386336130]
+position_smoothing_enabled = true

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://31a6x6mlvh3k" path="res://source/util/camflash.gd" id="1_j2gw6"]
 [ext_resource type="Script" uid="uid://dqo3hwr7u6qdp" path="res://source/overlay.gd" id="1_nkpv2"]
 [ext_resource type="Script" uid="uid://blfk5gsk3wro8" path="res://source/util/transition.gd" id="2_8b1ca"]
+[ext_resource type="AudioStream" uid="uid://c0s42ab2qm1wa" path="res://assets/music/freakyMenu.ogg" id="4_4c5k4"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j2gw6"]
 blend_mode = 1
@@ -98,7 +99,7 @@ script = ExtResource("1_j2gw6")
 [node name="trans" type="Sprite2D" parent="." unique_id=1307707209]
 position = Vector2(640, -294)
 rotation = 1.5707964
-scale = Vector2(0.9, 1280)
+scale = Vector2(0.9, 2560)
 texture = SubResource("GradientTexture2D_6livi")
 script = ExtResource("2_8b1ca")
 
@@ -115,3 +116,8 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "FPS: 60"
 script = ExtResource("1_nkpv2")
+
+[node name="music" type="AudioStreamPlayer2D" parent="." unique_id=618497064]
+position = Vector2(963, 452)
+stream = ExtResource("4_4c5k4")
+autoplay = true

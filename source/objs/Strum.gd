@@ -21,6 +21,7 @@ func init(data:int = 0):
 	material = load('res://assets/shaders/noteRGB.material')
 	var gbr = Save.Settings.get('noteRGB')[dir]
 	Note.applyRGB(self, gbr[0], gbr[1], gbr[2])
+	offset = Vector2(0,-4)
 
 	
 
