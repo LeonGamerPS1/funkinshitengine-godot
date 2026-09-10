@@ -2,6 +2,15 @@
 
 [ext_resource type="Script" uid="uid://5ymhcnp6bgwc" path="res://source/objs/strumLine.gd" id="1_2ndou"]
 
+[sub_resource type="Curve2D" id="Curve2D_2ndou"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 720)
+}
+point_count = 1
+
 [node name="strumline" type="Node2D" unique_id=1975566649]
 z_as_relative = false
 script = ExtResource("1_2ndou")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=335525662]
+curve = SubResource("Curve2D_2ndou")

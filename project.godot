@@ -43,7 +43,6 @@ window/frame_pacing/android/swappy_mode=1
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/dpi/allow_hidpi=false
-window/per_pixel_transparency/allowed=true
 display_server/driver.linuxbsd="x11"
 window/vsync/vsync_mode=0
 window/ios/hide_home_indicator=false
@@ -92,7 +91,7 @@ scaling_3d/mode.ios=5
 scaling_3d/mode.macos=5
 environment/glow/upscale_mode=0
 environment/volumetric_fog/use_filter=0
-viewport/transparent_background=true
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 
 [scene_manager]
 
