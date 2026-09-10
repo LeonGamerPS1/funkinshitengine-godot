@@ -60,6 +60,10 @@ func check_option_availability(option_name: String) -> void:
 	match option_name:
 		"freeplay":
 			Transition.switchScene("res://source/scenes/FreeplayMenu.tscn")
+		"donate":
+			OS.shell_open("https://ninja-muffin24.itch.io/funkin")
+		'options':
+			Transition.switchScene('res://source/scenes/OptionsMenu.tscn')
 		_:
 			pass
 

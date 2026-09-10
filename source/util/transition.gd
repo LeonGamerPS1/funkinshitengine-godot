@@ -9,6 +9,7 @@ func _ready() -> void:
 	visible = false
 
 static func switchScene(scene):
+	
 	i.visible = true
 	animplayer.play('slidein')
 	i.queue_redraw()

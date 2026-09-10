@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dnyarq46cydcu"]
+
+[ext_resource type="FontFile" uid="uid://c08ny4jyoeqja" path="res://assets/fnts/FridayNightFunkin-Regular.ttf" id="1_damyn"]
+[ext_resource type="Script" uid="uid://ceya0pl2ttl1s" path="res://assets/presets/icon_label.gd" id="2_bo8nl"]
+[ext_resource type="Texture2D" uid="uid://cykjisjqemokt" path="res://assets/ui/icons/icon-face.png" id="3_damyn"]
+
+[node name="iconLabel" type="Label" unique_id=480215888 node_paths=PackedStringArray("icon")]
+offset_right = 455.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("1_damyn")
+theme_override_font_sizes/font_size = 60
+text = "SONG"
+script = ExtResource("2_bo8nl")
+icon = NodePath("icon")
+
+[node name="icon" type="Sprite2D" parent="." unique_id=2112202624]
+position = Vector2(0, 30)
+texture = ExtResource("3_damyn")
+hframes = 2

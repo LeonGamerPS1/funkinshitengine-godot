@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cgt7crxegttbj"]
+
+[ext_resource type="Texture2D" uid="uid://dpip36bdx3k4c" path="res://assets/ui/menuOutline.png" id="1_dthew"]
+
+[sub_resource type="Gradient" id="Gradient_eir2m"]
+offsets = PackedFloat32Array(0.042168673, 0.96428573)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.6431373, 0.09803922, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xn7gp"]
+gradient = SubResource("Gradient_eir2m")
+
+[node name="bg" type="Sprite2D" unique_id=2054233452]
+self_modulate = Color(0.23137255, 0.13333334, 0.003921569, 1)
+texture = ExtResource("1_dthew")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=276429551]
+show_behind_parent = true
+position = Vector2(-2.5, 8.75)
+scale = Vector2(5.9804688, 738.5)
+texture = SubResource("GradientTexture1D_xn7gp")

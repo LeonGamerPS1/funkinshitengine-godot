@@ -18,7 +18,7 @@ var aliveNotes: Array[Note] = []
 var deadSplashes: Array[Splash] = []
 var aliveSplashes: Array[Splash] = []
 
-var DefaultStrumResetTime = 0.15
+static var DefaultStrumResetTime = 0.15
 
 
 
@@ -124,7 +124,7 @@ func hitNote(note:Note):
 		doCharAnim(note)
 		if(note.cpu):
 			strum.r = DefaultStrumResetTime
-		#	var splash = getSplashFromDump()
+			#var splash = getSplashFromDump()
 		#	splash.spawn(note, note.lane)
 		#	add_child(splash)
 		#	if not splash.kill.is_connected(splashEnd):

@@ -8,10 +8,9 @@ var godot_version: String = Engine.get_version_info().string
 func _process(_delta: float) -> void:
 	if not visible:
 		return
-	d += _delta
-	if d >= 1:
-		_update_performance_display()
-		d = 0
+
+	_update_performance_display()
+	
 
 
 

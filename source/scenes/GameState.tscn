@@ -15,11 +15,10 @@ process_mode = 3
 script = ExtResource("1_ewn2p")
 inst = NodePath("inst")
 voices = NodePath("voices")
-strumLines = [NodePath("camHUD/Node2D/strumlines/0"), NodePath("camHUD/Node2D/strumlines/1")]
-downscroll = true
-healthBar = NodePath("camHUD/Node2D/healthbar")
-iconP1 = [NodePath("camHUD/Node2D/healthbar/icons/iconP1")]
-iconP2 = [NodePath("camHUD/Node2D/healthbar/icons/iconP2")]
+strumLines = [NodePath("camHUD/children/strumlines/0"), NodePath("camHUD/children/strumlines/1")]
+healthBar = NodePath("camHUD/children/healthbar")
+iconP1 = [NodePath("camHUD/children/healthbar/icons/iconP1")]
+iconP2 = [NodePath("camHUD/children/healthbar/icons/iconP2")]
 stage = NodePath("stage")
 
 [node name="camHUD" type="CanvasLayer" parent="." unique_id=996848151]
@@ -27,10 +26,10 @@ offset = Vector2(640, 360)
 transform = Transform2D(1, 0, 0, 1, 640, 360)
 follow_viewport_scale = 1.1
 
-[node name="Node2D" type="Node2D" parent="camHUD" unique_id=153041920]
+[node name="children" type="Node2D" parent="camHUD" unique_id=153041920]
 position = Vector2(-640, -360)
 
-[node name="progress text" type="Label" parent="camHUD/Node2D" unique_id=633836156]
+[node name="progress text" type="Label" parent="camHUD/children" unique_id=633836156]
 texture_filter = 2
 offset_left = 340.0
 offset_top = 16.0
@@ -42,17 +41,17 @@ theme_override_fonts/font = ExtResource("9_d1mkr")
 text = "Loading.. - N/A  (0:00 / 0:00)"
 horizontal_alignment = 1
 
-[node name="strumlines" type="Node2D" parent="camHUD/Node2D" unique_id=389750993]
+[node name="strumlines" type="Node2D" parent="camHUD/children" unique_id=389750993]
 position = Vector2(0, 16)
 
-[node name="0" parent="camHUD/Node2D/strumlines" unique_id=1975566649 instance=ExtResource("10_vm2na")]
+[node name="0" parent="camHUD/children/strumlines" unique_id=1975566649 instance=ExtResource("10_vm2na")]
 position = Vector2(320, 50)
 
-[node name="1" parent="camHUD/Node2D/strumlines" unique_id=109666557 instance=ExtResource("10_vm2na")]
+[node name="1" parent="camHUD/children/strumlines" unique_id=109666557 instance=ExtResource("10_vm2na")]
 position = Vector2(960, 50)
 isOpponentSide = false
 
-[node name="healthbar" type="TextureProgressBar" parent="camHUD/Node2D" unique_id=1001578737]
+[node name="healthbar" type="TextureProgressBar" parent="camHUD/children" unique_id=1001578737]
 texture_filter = 1
 offset_left = 340.0
 offset_top = 647.0
@@ -71,16 +70,16 @@ tint_progress = Color(0, 1, 0, 1)
 script = ExtResource("3_4kcx6")
 iconBopScale = Vector2(1.1, 1.1)
 
-[node name="icons" type="Node2D" parent="camHUD/Node2D/healthbar" unique_id=1114678183]
+[node name="icons" type="Node2D" parent="camHUD/children/healthbar" unique_id=1114678183]
 position = Vector2(300.5, -75)
 
-[node name="iconP1" type="Sprite2D" parent="camHUD/Node2D/healthbar/icons" unique_id=138033593]
+[node name="iconP1" type="Sprite2D" parent="camHUD/children/healthbar/icons" unique_id=138033593]
 texture_filter = 2
 position = Vector2(43, 75)
 flip_h = true
 hframes = 2
 
-[node name="iconP2" type="Sprite2D" parent="camHUD/Node2D/healthbar/icons" unique_id=1647625921]
+[node name="iconP2" type="Sprite2D" parent="camHUD/children/healthbar/icons" unique_id=1647625921]
 oversampling_with_scale = 1
 texture_filter = 2
 position = Vector2(-43, 75)

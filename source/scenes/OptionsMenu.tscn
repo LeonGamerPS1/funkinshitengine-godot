@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ckjb2id0wxp6q"]
+
+[ext_resource type="PackedScene" uid="uid://cgt7crxegttbj" path="res://source/objs/menubg.tscn" id="1_b71jq"]
+
+[node name="Options" type="Node2D" unique_id=451833475]
+
+[node name="bg" parent="." unique_id=2054233452 instance=ExtResource("1_b71jq")]
+position = Vector2(640, 360)

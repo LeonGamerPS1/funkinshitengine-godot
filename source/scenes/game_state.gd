@@ -1,4 +1,5 @@
 extends Node2D
+class_name GameState
 
 @export
 var inst:AudioStreamPlayer2D
@@ -24,10 +25,16 @@ var startedCountdown = false
 var startedSong = false
 var health = 1
 
+var globalmusic:AudioStreamPlayer2D
+
 
 
 
 func _ready() -> void:
+	
+	get_tree().root.size_changed.connect(on_viewport_size_changed)
+	globalmusic = Transition.i.get_parent().get_node("music")
+
 	if not song:
 		song = Song.loadFromJson('hard', 'ayoeth')
 	if not stage:
@@ -66,7 +73,7 @@ func _ready() -> void:
 	
 	
 	
-	timeTxt = get_node("camHUD/Node2D/progress text")
+	timeTxt = get_node("camHUD/children/progress text")
 
 	startCountdown()
 
@@ -74,11 +81,12 @@ func _ready() -> void:
 	voices.stream = AudioUtil.load_stream(AudioUtil.add_audio_ext('res://assets/songs/' + str(song.song).to_lower().replace(' ','-')) + '/Voices')
 
 	Conductor.bpm = song.bpm
-
+	StrumLine.DefaultStrumResetTime = Conductor.step_length * 1.25 * .001
 	Conductor.time = -Conductor.beat_length * 5
 	Conductor.events.on_measure.connect(onSectionHit)
+
 	if downscroll:
-		$camHUD/Node2D/strumlines.position.y = 720 - 150 - (160 * 0.3)
+		$camHUD/children/strumlines.position.y = 720 - 150 - (160 * 0.3)
 		healthBar.position.y = 68
 	
 	var pos = 0
@@ -99,6 +107,9 @@ func _ready() -> void:
 		i.sor1()
 		i.noteHit.connect(hitNote)
 		i.noteMiss.connect(missNote)
+		
+	globalmusic.stop()
+	on_viewport_size_changed()
 		
 		
 	
@@ -218,7 +229,21 @@ func updateIcon(icon:Sprite2D, player:bool, percent:float):
 func onDeath():
 	Transition.switchScene('res://source/scenes/GameState.tscn')
 	
+func _exit_tree() -> void:
+	get_tree().root.size_changed.disconnect(on_viewport_size_changed)
+	
 static func loadIcon(icon:String) -> Texture2D:
 	return load('res://assets/ui/icons/icon-' + icon + '.png')
+
+
+func on_viewport_size_changed():
+	var vP = Vector2(get_viewport().get_visible_rect().size)
+	
+	# Setzt die Kamera exakt in die Mitte des Bildschirms
+	camHUD.offset = vP / 2.0
+	
+	# Zieht die halbe Bildschirmgröße ab, um den Nullpunkt (oben links) 
+	# des UI-Elements wieder auszugleichen.
+	camHUD.get_child(0).position = -(vP / 2.0)
 
 	

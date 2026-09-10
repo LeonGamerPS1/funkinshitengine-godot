@@ -33,7 +33,6 @@ func _ready() -> void:
 
 	susCont.show_behind_parent = true
 
-
 	susCont.add_child(endPiece)
 	susCont.add_child(sustain)
 	

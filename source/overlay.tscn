@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://31a6x6mlvh3k" path="res://source/util/camflash.gd" id="1_j2gw6"]
 [ext_resource type="Script" uid="uid://dqo3hwr7u6qdp" path="res://source/overlay.gd" id="1_nkpv2"]
+[ext_resource type="Script" uid="uid://m3253yafaqrd" path="res://source/shtuff.gd" id="1_nq5l4"]
 [ext_resource type="Script" uid="uid://blfk5gsk3wro8" path="res://source/util/transition.gd" id="2_8b1ca"]
 [ext_resource type="AudioStream" uid="uid://c0s42ab2qm1wa" path="res://assets/music/freakyMenu.ogg" id="4_4c5k4"]
 
@@ -83,8 +84,11 @@ _data = {
 &"slideout": SubResource("Animation_8b1ca")
 }
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1205604420]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1205604420 node_paths=PackedStringArray("mus")]
+process_mode = 3
 layer = 2
+script = ExtResource("1_nq5l4")
+mus = NodePath("music")
 
 [node name="flash" type="ColorRect" parent="." unique_id=374382919]
 visible = false

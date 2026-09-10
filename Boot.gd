@@ -39,3 +39,9 @@ static func load_stream(path: String) -> AudioStream:
 		_:
 			push_error("not supported Audioformat: " + ext + ' , loading into ram')
 			return load(final_path)
+			
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F11:
+		var isFullscreen = Save.Settings.get('windowMode', DisplayServer.WINDOW_MODE_WINDOWED) == 4
+		Save.Settings.set('windowMode', DisplayServer.WINDOW_MODE_WINDOWED if isFullscreen else 4)
+		DisplayServer.window_set_mode(Save.Settings.get('windowMode', DisplayServer.WINDOW_MODE_WINDOWED))

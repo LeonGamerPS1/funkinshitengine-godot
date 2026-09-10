@@ -43,6 +43,7 @@ window/frame_pacing/android/swappy_mode=1
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/dpi/allow_hidpi=false
+window/per_pixel_transparency/allowed=true
 display_server/driver.linuxbsd="x11"
 window/vsync/vsync_mode=0
 window/ios/hide_home_indicator=false
@@ -65,6 +66,10 @@ config/default/ease_type="IN_OUT"
 config/default/animation_enter=4
 config/default/animation_leave=4
 
+[input_devices]
+
+buffering/agile_event_flushing=true
+
 [physics]
 
 2d/physics_engine="Dummy"
@@ -79,9 +84,14 @@ textures/vram_compression/import_etc2_astc=true
 lights_and_shadows/use_physical_light_units=true
 textures/default_filters/use_nearest_mipmap_filter=true
 textures/default_filters/anisotropic_filtering_level=1
+environment/ssao/quality=0
+environment/ssil/quality=0
+viewport/hdr_2d=true
 scaling_3d/mode=5
 scaling_3d/mode.ios=5
 scaling_3d/mode.macos=5
+environment/glow/upscale_mode=0
+environment/volumetric_fog/use_filter=0
 viewport/transparent_background=true
 
 [scene_manager]

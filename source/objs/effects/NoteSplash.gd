@@ -1,15 +1,16 @@
 extends AnimatedSprite2D
 class_name Splash
-
+static var splashframes:SpriteFrames
 signal kill
 @export var dir = 0
 func _ready() -> void:
-
+	scale = Vector2(1, -1)
 	animation_finished.connect(finished)
 
 func spawn(target:Node2D, dire:int = 0):
-	if not sprite_frames:
-		sprite_frames = load("res://assets/ui/splashes/noteSplashes.xml")
+	if not splashframes:
+		splashframes = load("res://assets/ui/splashes/noteSplashes.xml")
+	sprite_frames = splashframes
 	dir = dire
 	position = target.position
 	
