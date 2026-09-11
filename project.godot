@@ -43,7 +43,6 @@ window/frame_pacing/android/swappy_mode=1
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/dpi/allow_hidpi=false
-window/per_pixel_transparency/allowed=true
 display_server/driver.linuxbsd="x11"
 window/vsync/vsync_mode=0
 window/ios/hide_home_indicator=false
@@ -77,7 +76,7 @@ buffering/agile_event_flushing=true
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-renderer/rendering_method="gl_compatibility"
+renderer/rendering_method="mobile"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_s3tc_bptc=true
 textures/vram_compression/import_etc2_astc=true

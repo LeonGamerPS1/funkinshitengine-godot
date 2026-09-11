@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bwt01dkfkjmnl"]
+
+[ext_resource type="SpriteFrames" uid="uid://ccsr2mvmf71xb" path="res://assets/images/characters/exe.xml" id="1_ryvgy"]
+[ext_resource type="Script" uid="uid://ueue8j553l4t" path="res://source/objs/character.gd" id="2_1rgw8"]
+
+[node name="exe" type="AnimatedSprite2D" unique_id=843374013]
+sprite_frames = ExtResource("1_ryvgy")
+animation = &"exe Idle"
+frame = 11
+frame_progress = 1.0
+script = ExtResource("2_1rgw8")
+camPos = Vector2(-100, -100)
+posOffset = Vector2(240, 540)
+icon = "darnell"
+anim_config = Dictionary[String, Dictionary]({
+"down": {
+"fps": 24.0,
+"name": "down",
+"offsets": [0, 25],
+"prefix": "exe Down"
+},
+"idle": {
+"fps": 24.0,
+"name": "idle",
+"offsets": [0, 0],
+"prefix": "exe Idle"
+},
+"left": {
+"fps": 24.0,
+"name": "left",
+"offsets": [-19, 5],
+"prefix": "exe Left"
+},
+"right": {
+"fps": 24.0,
+"name": "right",
+"offsets": [42, 3],
+"prefix": "exe Right"
+},
+"up": {
+"fps": 24.0,
+"name": "up",
+"offsets": [25, -13],
+"prefix": "exe Up"
+}
+})

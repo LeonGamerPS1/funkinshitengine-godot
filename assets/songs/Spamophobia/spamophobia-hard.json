@@ -1,6 +1,6 @@
 {
 	"song": {
-		"player1": "bfscared",
+		"player1": "bf",
 		"credit": "LiterallyWize",
 		"notes": [
 			{
@@ -124970,7 +124970,7 @@
 				"mustHitSection": true
 			}
 		],
-		"player2": "nimbi",
+		"player2": "bf",
 		"player3": "nogf",
 		"screwYou": "F U C K    Y O U    B I T C H!",
 		"splashSkin": "HURTnoteSplashes",
@@ -124982,6 +124982,6 @@
 		"stage": "spamo",
 		"arrowPlayerSkin": "NOTE_assets",
 		"bpm": 261,
-		"speed": 4.5
+		"speed": 20
 	}
 }

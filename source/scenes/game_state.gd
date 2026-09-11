@@ -81,7 +81,6 @@ func _ready() -> void:
 	voices.stream = AudioUtil.load_stream(AudioUtil.add_audio_ext('res://assets/songs/' + str(song.song).to_lower().replace(' ','-')) + '/Voices')
 
 	Conductor.bpm = song.bpm
-	StrumLine.DefaultStrumResetTime = Conductor.step_length * 1.25 * .001
 	Conductor.time = -Conductor.beat_length * 5
 	Conductor.events.on_measure.connect(onSectionHit)
 
