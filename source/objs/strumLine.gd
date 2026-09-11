@@ -41,10 +41,7 @@ func _ready() -> void:
 
 func addNoteArray(array: Array[Variant]):
 	noteDatas.push_back(array)
-	var length = array[2]
 	
-	if length is float or length is int:
-		array[2] = length - Conductor.step_length / 2
 
 
 
@@ -124,11 +121,11 @@ func hitNote(note:Note):
 		doCharAnim(note)
 		if(note.cpu):
 			strum.r = DefaultStrumResetTime
-			#var splash = getSplashFromDump()
-		#	splash.spawn(note, note.lane)
-		#	add_child(splash)
-		#	if not splash.kill.is_connected(splashEnd):
-		#		splash.kill.connect(splashEnd)
+			var splash = getSplashFromDump()
+			splash.spawn(note, note.lane)
+			add_child(splash)
+			if not splash.kill.is_connected(splashEnd):
+				splash.kill.connect(splashEnd)
 			
 	
 	

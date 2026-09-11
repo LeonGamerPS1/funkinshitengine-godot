@@ -13,10 +13,10 @@ var lH = 1
 var lengthSus:float = 0
 var sustain:TextureRect
 var endPiece:Sprite2D
-
 var missed = false
 static var noteMat:Material
 var susCont:Node2D
+
 func _ready() -> void:
 	susCont = Node2D.new()
 	add_child(susCont)
@@ -26,14 +26,13 @@ func _ready() -> void:
 
 
 	sustain.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	
 	scale = Vector2(.7, .7)
 
 
 	susCont.show_behind_parent = true
-
 	susCont.add_child(endPiece)
 	susCont.add_child(sustain)
+	endPiece.scale.y = .98
 	
 	if not noteMat:
 		noteMat = load("res://assets/shaders/noteRGB.material")
@@ -56,9 +55,6 @@ func setup(_data:Array[Variant], strum:Strum, _speed:float = 21):
 	missed = false
 	data = _data
 	lane = int(data[1]) % 4
-
-
-	
 	self_modulate.a = 1
 
 	sustain.texture = sprite_frames.get_frame_texture(colors[lane] + ' hold piece', 0)
@@ -74,11 +70,7 @@ func setup(_data:Array[Variant], strum:Strum, _speed:float = 21):
 			sustain.material = noteMat
 			sustain.visible = true
 			endPiece.visible = true
-
-	
 			sustain.stretch_mode = TextureRect.STRETCH_SCALE
-
-
 			updateSusLength(_speed)
 	else:
 			sustain.visible = false

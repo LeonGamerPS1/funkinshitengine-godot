@@ -4,7 +4,6 @@ static var splashframes:SpriteFrames
 signal kill
 @export var dir = 0
 func _ready() -> void:
-	scale = Vector2(1, -1)
 	animation_finished.connect(finished)
 
 func spawn(target:Node2D, dire:int = 0):
