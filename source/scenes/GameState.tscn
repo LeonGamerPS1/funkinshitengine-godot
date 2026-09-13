@@ -43,13 +43,14 @@ horizontal_alignment = 1
 
 [node name="strumlines" type="Node2D" parent="camHUD/children" unique_id=389750993]
 position = Vector2(0, 16)
+rotation = 0.010138392
+scale = Vector2(0.66639024, 1.5123248)
 
 [node name="0" parent="camHUD/children/strumlines" unique_id=1975566649 instance=ExtResource("10_vm2na")]
 position = Vector2(320, 50)
 
 [node name="1" parent="camHUD/children/strumlines" unique_id=109666557 instance=ExtResource("10_vm2na")]
 position = Vector2(960, 50)
-isOpponentSide = false
 
 [node name="healthbar" type="TextureProgressBar" parent="camHUD/children" unique_id=1001578737]
 texture_filter = 1

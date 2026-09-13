@@ -22,7 +22,6 @@ func _ready() -> void:
 	add_child(susCont)
 	sustain = TextureRect.new()
 	endPiece = Sprite2D.new()
-	endPiece.scale.x = 1
 
 
 
