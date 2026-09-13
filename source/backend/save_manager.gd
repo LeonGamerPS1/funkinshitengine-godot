@@ -1,7 +1,7 @@
 extends Node
 class_name Save
 
-var savePath: String = "user://saves/slot0.bin"
+var savePath: String = "user://saves/slot0.dat"
 
 static var Settings: Dictionary = {
 	"fps": 64.0,
@@ -13,7 +13,7 @@ static var Settings: Dictionary = {
 		[Color("ff0000ff"), Color("00ff00ff"), Color("0000ffff")],
 		[Color("ff0000ff"), Color("00ff00ff"), Color("0000ffff")]
 	],
-	"noteskin": "notes"
+	"noteskin": "NOTE_assets"
 }
 
 func _init() -> void:
